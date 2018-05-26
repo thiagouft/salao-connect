@@ -2,15 +2,40 @@ package com.ps.salaoconnect.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private char sexo;
 	private String email;
 	private String senha;
 	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy = "usuario")
+	private Agendar agendar;
+	
+	
+	
+	
+	
+	public Agendar getAgendar() {
+		return agendar;
+	}
+
+	public void setAgendar(Agendar agendar) {
+		this.agendar = agendar;
+	}
+
 	public Usuario(){
 	}
 
