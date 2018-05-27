@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -32,10 +31,10 @@ public class Agendar implements Serializable{
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="usuario_id")
-	@MapsId //garatir que seja o mesmo Id do pedido
+	//@MapsId //garatir que seja o mesmo Id do Usuario
 	private Usuario usuario;
 	
-
+	
 	@ManyToOne
 	@JoinColumn(name="servico_id")
 	private Servicos servicos;

@@ -9,12 +9,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ps.salaoconnect.domain.Agendar;
+import com.ps.salaoconnect.domain.Avaliacao;
 import com.ps.salaoconnect.domain.Endereco;
 import com.ps.salaoconnect.domain.Funcionario;
 import com.ps.salaoconnect.domain.Salao;
 import com.ps.salaoconnect.domain.Servicos;
 import com.ps.salaoconnect.domain.Usuario;
 import com.ps.salaoconnect.repositories.AgendarRepository;
+import com.ps.salaoconnect.repositories.AvaliacaoRepository;
 import com.ps.salaoconnect.repositories.EnderecoRepository;
 import com.ps.salaoconnect.repositories.FuncionarioRepository;
 import com.ps.salaoconnect.repositories.SalaoRepository;
@@ -41,6 +43,9 @@ public class SalaoConnectApplication implements CommandLineRunner{
 	
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
+	
+	@Autowired
+	private AvaliacaoRepository avaliacaoRepository;
 	
 	
 
@@ -82,17 +87,26 @@ public class SalaoConnectApplication implements CommandLineRunner{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		Agendar agd1 = new Agendar(null, sdf.parse("30/09/2017 10:32"), "Pendente", "Cartão",user1,serv1);
 		Agendar agd2 = new Agendar(null, sdf.parse("30/09/2017 10:32"), "Pendente", "A Vista",user2,serv3);
-				
+		
 		serv1.getAgendas().addAll(Arrays.asList(agd1));
 		serv3.getAgendas().addAll(Arrays.asList(agd2));
+		
+		Avaliacao aval1 = new Avaliacao(null, "Muito bom o serviço", 5, agd1, serv1);
+		Avaliacao aval2 = new Avaliacao(null, "Serviço mais ou menos", 3, agd2, serv3);
+		
+		serv1.getAvaliacao().addAll(Arrays.asList(aval1));
+		serv3.getAvaliacao().addAll(Arrays.asList(aval2));
+				
+		
 		
 		
 		usuarioRepository.saveAll(Arrays.asList(user1,user2));
 		salaoRepository.saveAll(Arrays.asList(salao1,salao2));
-		servicosRepository.saveAll(Arrays.asList(serv1,serv2,serv3,serv4));
 		enderecoRepository.saveAll(Arrays.asList(end1,end2));
+		servicosRepository.saveAll(Arrays.asList(serv1,serv2,serv3,serv4));
 		funcionarioRepository.saveAll(Arrays.asList(func1,func2,func3,func4));
-		//agendarRepository.saveAll(Arrays.asList(agd1,agd2));
+		agendarRepository.saveAll(Arrays.asList(agd1,agd2));
+		avaliacaoRepository.saveAll(Arrays.asList(aval1,aval2));
 			
 	}
 	

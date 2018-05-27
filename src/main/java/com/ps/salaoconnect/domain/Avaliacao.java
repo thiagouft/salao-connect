@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,7 +25,7 @@ public class Avaliacao implements Serializable{
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="agendar_id")
-	@MapsId //garatir que seja o mesmo Id do pedido
+	//@MapsId //garatir que seja o mesmo Id do pedido
 	private Agendar agendar;
 
 	@ManyToOne
@@ -38,11 +37,13 @@ public class Avaliacao implements Serializable{
 	public Avaliacao() {
 	}
 
-	public Avaliacao(Integer id, String descricao, int nivelSatisfacao) {
+	public Avaliacao(Integer id, String descricao, int nivelSatisfacao, Agendar agendar, Servicos servico) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.nivelSatisfacao = nivelSatisfacao;
+		this.agendar = agendar;
+		this.servico = servico;
 	}
 
 	public Integer getId() {
