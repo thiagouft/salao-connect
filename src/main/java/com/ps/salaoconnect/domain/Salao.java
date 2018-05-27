@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Salao implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -30,7 +28,7 @@ public class Salao implements Serializable{
 	@OneToMany(mappedBy = "salao")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy="salao")
 	private List<Funcionario> funcionarios = new ArrayList<>();
 	

@@ -30,7 +30,7 @@ public class Servicos implements Serializable{
 	@JoinColumn(name="salao_id")
 	private Salao salao;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy="servicos")
 	private List<Agendar> agendas = new ArrayList<>();
 	

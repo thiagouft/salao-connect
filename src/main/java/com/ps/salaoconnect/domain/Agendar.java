@@ -34,7 +34,7 @@ public class Agendar implements Serializable{
 	//@MapsId //garatir que seja o mesmo Id do Usuario
 	private Usuario usuario;
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="servico_id")
 	private Servicos servicos;
