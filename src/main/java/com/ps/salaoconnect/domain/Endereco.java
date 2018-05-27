@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Endereco implements Serializable{
@@ -19,6 +23,19 @@ public class Endereco implements Serializable{
 	private String complemento;
 	private String bairro;
 	private String cep;
+	
+	public Salao getSalao() {
+		return salao;
+	}
+
+	public void setSalao(Salao salao) {
+		this.salao = salao;
+	}
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="salao_id")
+	private Salao salao;
 	
 	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep) {
 		super();

@@ -6,6 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Avaliacao implements Serializable{
@@ -17,7 +23,32 @@ public class Avaliacao implements Serializable{
 	private String descricao;
 	private int nivelSatisfacao;
 	
+	@JsonIgnore
+	@OneToOne
+	@JoinColumn(name="agendar_id")
+	@MapsId //garatir que seja o mesmo Id do pedido
+	private Agendar agendar;
 	
+	public Agendar getAgendar() {
+		return agendar;
+	}
+
+	public void setAgendar(Agendar agendar) {
+		this.agendar = agendar;
+	}
+
+	public Servicos getServico() {
+		return servico;
+	}
+
+	public void setServico(Servicos servico) {
+		this.servico = servico;
+	}
+
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="servico_id")
+	private Servicos servico;
 	
 	
 	public Avaliacao() {

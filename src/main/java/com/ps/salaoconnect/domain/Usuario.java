@@ -25,9 +25,6 @@ public class Usuario implements Serializable{
 	private Agendar agendar;
 	
 	
-	
-	
-	
 	public Agendar getAgendar() {
 		return agendar;
 	}

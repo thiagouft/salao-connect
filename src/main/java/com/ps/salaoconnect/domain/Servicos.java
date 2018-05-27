@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,18 +26,54 @@ public class Servicos implements Serializable{
 	private int tempoGasto;
 	
 	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="salao_id")
+	private Salao salao;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="servicos")
 	private List<Agendar> agendas = new ArrayList<>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy="servico")
+	private List<Avaliacao> avaliacao = new ArrayList<>();
 	
-	public Servicos(Integer id, String descricao, float valor, int tempoGasto) {
+	
+	
+	
+	public Servicos(Integer id, String descricao, float valor, int tempoGasto, Salao salao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.valor = valor;
 		this.tempoGasto = tempoGasto;
+		this.salao = salao;
 	}
 	
+	public Salao getSalao() {
+		return salao;
+	}
+
+	public void setSalao(Salao salao) {
+		this.salao = salao;
+	}
+
+	public List<Agendar> getAgendas() {
+		return agendas;
+	}
+
+	public void setAgendas(List<Agendar> agendas) {
+		this.agendas = agendas;
+	}
+
+	public List<Avaliacao> getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(List<Avaliacao> avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
 	public Servicos() {
 	}
 

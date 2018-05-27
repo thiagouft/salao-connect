@@ -1,11 +1,16 @@
 package com.ps.salaoconnect.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Salao implements Serializable{
@@ -15,9 +20,43 @@ public class Salao implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	public List<Servicos> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servicos> servicos) {
+		this.servicos = servicos;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+
 	private boolean ativo;
 	private String nomeProprietario;
 	private String telefone;
+	
+	@OneToMany(mappedBy = "salao")
+	private List<Servicos> servicos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "salao")
+	private List<Endereco> enderecos = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="salao")
+	private List<Funcionario> funcionarios = new ArrayList<>();
 	
 	public Salao(Integer id, String nome, boolean ativo, String nomeProprietario, String telefone) {
 		super();

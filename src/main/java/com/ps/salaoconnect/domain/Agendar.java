@@ -3,6 +3,7 @@ package com.ps.salaoconnect.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,9 +35,20 @@ public class Agendar implements Serializable{
 	@MapsId //garatir que seja o mesmo Id do pedido
 	private Usuario usuario;
 	
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="servico_id")
 	private Servicos servicos;
+	
+	@OneToOne(cascade=CascadeType.ALL, mappedBy = "agendar")
+	private Avaliacao avaliacao;
 	
 	
 	public Servicos getServicos() {

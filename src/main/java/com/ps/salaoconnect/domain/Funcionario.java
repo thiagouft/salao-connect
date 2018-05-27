@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Funcionario implements Serializable{
@@ -16,7 +20,20 @@ public class Funcionario implements Serializable{
 	private Integer id;
 	private String nome;
 	private int cargaHoraria;
+	public Salao getSalao() {
+		return salao;
+	}
+
+	public void setSalao(Salao salao) {
+		this.salao = salao;
+	}
+
 	private String cpf;
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="salao_id")
+	private Salao salao;
 	
 	public Funcionario(Integer id, String nome, int cargaHoraria, String cpf) {
 		super();
