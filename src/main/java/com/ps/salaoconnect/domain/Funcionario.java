@@ -20,13 +20,6 @@ public class Funcionario implements Serializable{
 	private Integer id;
 	private String nome;
 	private int cargaHoraria;
-	public Salao getSalao() {
-		return salao;
-	}
-
-	public void setSalao(Salao salao) {
-		this.salao = salao;
-	}
 
 	private String cpf;
 	
@@ -35,12 +28,13 @@ public class Funcionario implements Serializable{
 	@JoinColumn(name="salao_id")
 	private Salao salao;
 	
-	public Funcionario(Integer id, String nome, int cargaHoraria, String cpf) {
+	public Funcionario(Integer id, String nome, int cargaHoraria, String cpf, Salao salao) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cargaHoraria = cargaHoraria;
 		this.cpf = cpf;
+		this.salao = salao;
 	}
 
 	public Funcionario() {
@@ -76,6 +70,14 @@ public class Funcionario implements Serializable{
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+	public Salao getSalao() {
+		return salao;
+	}
+
+	public void setSalao(Salao salao) {
+		this.salao = salao;
 	}
 
 	@Override

@@ -28,22 +28,6 @@ public class Avaliacao implements Serializable{
 	@JoinColumn(name="agendar_id")
 	@MapsId //garatir que seja o mesmo Id do pedido
 	private Agendar agendar;
-	
-	public Agendar getAgendar() {
-		return agendar;
-	}
-
-	public void setAgendar(Agendar agendar) {
-		this.agendar = agendar;
-	}
-
-	public Servicos getServico() {
-		return servico;
-	}
-
-	public void setServico(Servicos servico) {
-		this.servico = servico;
-	}
 
 	@ManyToOne
 	@JsonIgnore
@@ -83,6 +67,22 @@ public class Avaliacao implements Serializable{
 
 	public void setNivelSatisfacao(int nivelSatisfacao) {
 		this.nivelSatisfacao = nivelSatisfacao;
+	}
+	
+	public Agendar getAgendar() {
+		return agendar;
+	}
+
+	public void setAgendar(Agendar agendar) {
+		this.agendar = agendar;
+	}
+
+	public Servicos getServico() {
+		return servico;
+	}
+
+	public void setServico(Servicos servico) {
+		this.servico = servico;
 	}
 
 	@Override

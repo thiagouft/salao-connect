@@ -20,30 +20,6 @@ public class Salao implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	public List<Servicos> getServicos() {
-		return servicos;
-	}
-
-	public void setServicos(List<Servicos> servicos) {
-		this.servicos = servicos;
-	}
-
-	public List<Endereco> getEnderecos() {
-		return enderecos;
-	}
-
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
-	}
-
-	public List<Funcionario> getFuncionarios() {
-		return funcionarios;
-	}
-
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
-	}
-
 	private boolean ativo;
 	private String nomeProprietario;
 	private String telefone;
@@ -108,6 +84,30 @@ public class Salao implements Serializable{
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public List<Servicos> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servicos> servicos) {
+		this.servicos = servicos;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
 	}
 
 	@Override

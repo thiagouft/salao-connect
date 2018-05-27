@@ -35,13 +35,6 @@ public class Agendar implements Serializable{
 	@MapsId //garatir que seja o mesmo Id do pedido
 	private Usuario usuario;
 	
-	public Avaliacao getAvaliacao() {
-		return avaliacao;
-	}
-
-	public void setAvaliacao(Avaliacao avaliacao) {
-		this.avaliacao = avaliacao;
-	}
 
 	@ManyToOne
 	@JoinColumn(name="servico_id")
@@ -50,6 +43,19 @@ public class Agendar implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL, mappedBy = "agendar")
 	private Avaliacao avaliacao;
 	
+
+	public Agendar() {
+	}
+	
+	public Agendar(Integer id, Date dataHora, String statusAgendamento, String formaDePagamento, Usuario usuario, Servicos servicos) {
+		super();
+		this.id = id;
+		this.dataHora = dataHora;
+		this.statusAgendamento = statusAgendamento;
+		this.formaDePagamento = formaDePagamento;
+		this.usuario = usuario;
+		this.servicos = servicos;
+	}
 	
 	public Servicos getServicos() {
 		return servicos;
@@ -65,17 +71,6 @@ public class Agendar implements Serializable{
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public Agendar() {
-	}
-	
-	public Agendar(Integer id, Date dataHora, String statusAgendamento, String formaDePagamento) {
-		super();
-		this.id = id;
-		this.dataHora = dataHora;
-		this.statusAgendamento = statusAgendamento;
-		this.formaDePagamento = formaDePagamento;
 	}
 
 	public Integer getId() {
@@ -108,6 +103,14 @@ public class Agendar implements Serializable{
 
 	public void setFormaDePagamento(String formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
+	}
+	
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
 	}
 
 	@Override

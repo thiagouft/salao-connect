@@ -24,17 +24,6 @@ public class Usuario implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL, mappedBy = "usuario")
 	private Agendar agendar;
 	
-	
-	public Agendar getAgendar() {
-		return agendar;
-	}
-
-	public void setAgendar(Agendar agendar) {
-		this.agendar = agendar;
-	}
-
-	public Usuario(){
-	}
 
 	public Usuario(Integer id, String nome, char sexo, String email, String senha) {
 		super();
@@ -83,6 +72,17 @@ public class Usuario implements Serializable{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public Agendar getAgendar() {
+		return agendar;
+	}
+
+	public void setAgendar(Agendar agendar) {
+		this.agendar = agendar;
+	}
+
+	public Usuario(){
 	}
 
 	@Override

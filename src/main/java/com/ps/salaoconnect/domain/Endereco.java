@@ -24,20 +24,13 @@ public class Endereco implements Serializable{
 	private String bairro;
 	private String cep;
 	
-	public Salao getSalao() {
-		return salao;
-	}
-
-	public void setSalao(Salao salao) {
-		this.salao = salao;
-	}
 
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="salao_id")
 	private Salao salao;
 	
-	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep) {
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Salao salao) {
 		super();
 		this.id = id;
 		this.logradouro = logradouro;
@@ -45,6 +38,7 @@ public class Endereco implements Serializable{
 		this.complemento = complemento;
 		this.bairro = bairro;
 		this.cep = cep;
+		this.salao = salao;
 	}
 
 	public Endereco() {
@@ -96,6 +90,14 @@ public class Endereco implements Serializable{
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+	public Salao getSalao() {
+		return salao;
+	}
+
+	public void setSalao(Salao salao) {
+		this.salao = salao;
 	}
 
 	@Override
