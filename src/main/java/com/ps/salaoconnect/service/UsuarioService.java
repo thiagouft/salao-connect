@@ -1,5 +1,6 @@
 package com.ps.salaoconnect.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,12 @@ public class UsuarioService {
 	}
 	
 	public void delete(Integer id) {
-			find(id);
-		
+			find(id);			
 			repo.deleteById(id);
-			
 	}
 	
+	public List<Usuario> findAll(){
+		return repo.findAll();
+	}
 
 }

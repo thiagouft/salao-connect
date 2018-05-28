@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,14 +23,14 @@ public class Salao implements Serializable{
 	private String nomeProprietario;
 	private String telefone;
 	
-	@OneToMany(mappedBy = "salao")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "salao")
 	private List<Servicos> servicos = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "salao")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "salao")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	//@JsonIgnore
-	@OneToMany(mappedBy="salao")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="salao")
 	private List<Funcionario> funcionarios = new ArrayList<>();
 	
 	public Salao(Integer id, String nome, boolean ativo, String nomeProprietario, String telefone) {
