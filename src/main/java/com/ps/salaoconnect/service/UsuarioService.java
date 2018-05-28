@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ps.salaoconnect.domain.Usuario;
 import com.ps.salaoconnect.repositories.UsuarioRepository;
+import com.ps.salaoconnect.services.exception.ObjectNotFoundException;
 
 @Service
 public class UsuarioService {
@@ -16,7 +17,27 @@ public class UsuarioService {
 	
 	public Usuario find(Integer id) {
 		Optional<Usuario> obj = repo.findById(id);
-			return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+					"Objeto não encontrado! Id: " + id + ", Tipo: " + Usuario.class.getName()));
+				
 	}
+	
+	public Usuario insert(Usuario obj) {
+			obj.setId(null);
+			return repo.save(obj);
+	}
+	
+	public Usuario update(Usuario obj) {
+			find(obj.getId());
+			return repo.save(obj);
+	}
+	
+	public void delete(Integer id) {
+			find(id);
+		
+			repo.deleteById(id);
+			
+	}
+	
 
 }

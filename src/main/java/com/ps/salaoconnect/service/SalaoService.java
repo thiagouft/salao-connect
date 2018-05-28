@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ps.salaoconnect.domain.Salao;
 import com.ps.salaoconnect.repositories.SalaoRepository;
+import com.ps.salaoconnect.services.exception.ObjectNotFoundException;
 
 @Service
 public class SalaoService {
@@ -16,7 +17,8 @@ public class SalaoService {
 	
 	public Salao find(Integer id) {
 		Optional<Salao> obj = repo.findById(id);
-			return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Salao.class.getName()));
 	}
 
 }
