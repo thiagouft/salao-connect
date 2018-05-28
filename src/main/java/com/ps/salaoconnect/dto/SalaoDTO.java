@@ -10,6 +10,8 @@ public class SalaoDTO implements Serializable{
 	private Integer id;
 	private String nome;
 	private String nomeProprietario;
+	private boolean ativo;
+	private String telefone;
 	
 	public SalaoDTO() {
 	}
@@ -18,8 +20,26 @@ public class SalaoDTO implements Serializable{
 		id = obj.getId();
 		nome = obj.getNome();
 		nomeProprietario = obj.getNomeProprietario();
-	}
+		ativo = obj.isAtivo();
+		telefone = obj.getTelefone();
+	}	
 	
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	public Integer getId() {
 		return id;
 	}
