@@ -1,5 +1,6 @@
 package com.ps.salaoconnect.dto;
 
+
 import java.io.Serializable;
 
 import javax.validation.constraints.Email;
@@ -7,6 +8,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.ps.salaoconnect.services.validation.UsuarioInsert;
+
+@UsuarioInsert
 public class UsuarioNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

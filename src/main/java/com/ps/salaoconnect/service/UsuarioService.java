@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.ps.salaoconnect.domain.Usuario;
+import com.ps.salaoconnect.dto.UsuarioDTO;
 import com.ps.salaoconnect.dto.UsuarioNewDTO;
 import com.ps.salaoconnect.repositories.UsuarioRepository;
 import com.ps.salaoconnect.services.exception.ObjectNotFoundException;
@@ -51,8 +52,13 @@ public class UsuarioService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public Usuario fromDTO(UsuarioDTO objDto) {
+		return new Usuario(null, objDto.getNome(), objDto.getSexo(), objDto.getEmail(), null);
+	}
+	
 	public Usuario fromDTO(UsuarioNewDTO objDto) {
 			return new Usuario(null, objDto.getNome(), objDto.getSexo(), objDto.getEmail(), objDto.getSenha());
 	}
+
 
 }

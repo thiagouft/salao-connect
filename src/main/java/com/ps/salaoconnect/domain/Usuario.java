@@ -3,6 +3,7 @@ package com.ps.salaoconnect.domain;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Usuario implements Serializable{
 	private Integer id;
 	private String nome;
 	private char sexo;
+	@Column(unique=true)
 	private String email;
 	private String senha;
 	
