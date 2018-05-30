@@ -12,7 +12,6 @@ public class SalaoConnectApplication implements CommandLineRunner{
 		SpringApplication.run(SalaoConnectApplication.class, args);
 	}
 	
-	
 	public void run(String... args) throws Exception {			
 	}
 	
