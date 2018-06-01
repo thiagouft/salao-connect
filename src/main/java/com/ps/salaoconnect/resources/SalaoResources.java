@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,7 +60,7 @@ public class SalaoResources {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SalaoDTO>> findAll() {
 	 	List<Salao> list = service.findAll();
 	 	List<SalaoDTO> listDto = list.stream().map(obj -> new SalaoDTO(obj)).collect(Collectors.toList());
