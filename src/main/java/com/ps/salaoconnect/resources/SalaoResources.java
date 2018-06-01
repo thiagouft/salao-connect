@@ -59,7 +59,7 @@ public class SalaoResources {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<SalaoDTO>> findAll() {
 	 	List<Salao> list = service.findAll();
 	 	List<SalaoDTO> listDto = list.stream().map(obj -> new SalaoDTO(obj)).collect(Collectors.toList());
