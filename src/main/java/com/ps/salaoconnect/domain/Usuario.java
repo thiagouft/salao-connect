@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,7 @@ public class Usuario implements Serializable{
 	private char sexo;
 	@Column(unique=true)
 	private String email;
+	@JsonIgnore
 	private String senha;
 	
 	@OneToOne(cascade=CascadeType.ALL, mappedBy = "usuario")

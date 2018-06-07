@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ps.salaoconnect.domain.Agendar;
@@ -46,10 +47,13 @@ public class DBService {
 	@Autowired
 	private AvaliacaoRepository avaliacaoRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder pe;
+	
 	public void instantiateTestDatabase() throws ParseException {
 		
-		Usuario user1 = new Usuario(null, "Thiago Silva", 'M', "thiagoufma@gmail.com", "123456");
-		Usuario user2 = new Usuario(null, "Ivo Poentes", 'M', "ivoufma@gmail.com", "123456");
+		Usuario user1 = new Usuario(null, "Thiago Silva", 'M', "thiagoufma@gmail.com", pe.encode("123456"));
+		Usuario user2 = new Usuario(null, "Ivo Poentes", 'M', "ivoufma@gmail.com", pe.encode("123456"));
 		
 		Salao salao1 = new Salao(null, "Barbearia Pereira", true, "Thiago Silva Pereira", "99999999");
 		Salao salao2 = new Salao(null, "Barbearia Orion Six", true, "Orion Six", "11111111111");
