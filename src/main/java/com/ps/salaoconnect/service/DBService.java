@@ -15,6 +15,8 @@ import com.ps.salaoconnect.domain.Funcionario;
 import com.ps.salaoconnect.domain.Salao;
 import com.ps.salaoconnect.domain.Servicos;
 import com.ps.salaoconnect.domain.Usuario;
+import com.ps.salaoconnect.domain.enums.Perfil;
+import com.ps.salaoconnect.domain.enums.TipoUsuario;
 import com.ps.salaoconnect.repositories.AgendarRepository;
 import com.ps.salaoconnect.repositories.AvaliacaoRepository;
 import com.ps.salaoconnect.repositories.EnderecoRepository;
@@ -52,11 +54,22 @@ public class DBService {
 	
 	public void instantiateTestDatabase() throws ParseException {
 		
-		Usuario user1 = new Usuario(null, "Thiago Silva", 'M', "thiagoufma@gmail.com", pe.encode("123456"));
-		Usuario user2 = new Usuario(null, "Ivo Poentes", 'M', "ivoufma@gmail.com", pe.encode("123456"));
+		Usuario user1 = new Usuario(null, "Thiago Silva", 'M', "thiagoufma@gmail.com", pe.encode("123456"), TipoUsuario.USUARIONORMAL);
+		Usuario user2 = new Usuario(null, "Ivo Poentes", 'M', "ivoufma@gmail.com", pe.encode("654321"), TipoUsuario.USUARIONORMAL);
+		Usuario user3 = new Usuario(null, "Orion Six", 'M', "orion@gmail.com", pe.encode("123123"), TipoUsuario.USUARIOSALAO);
+		Usuario user4 = new Usuario(null, "Pedro Louco", 'M', "pedro@gmail.com", pe.encode("321312"), TipoUsuario.USUARIOSALAO);
 		
-		Salao salao1 = new Salao(null, "Barbearia Pereira", true, "Thiago Silva Pereira", "99999999");
-		Salao salao2 = new Salao(null, "Barbearia Orion Six", true, "Orion Six", "11111111111");
+		user1.addPerfil(Perfil.CLIENTE);
+		user2.addPerfil(Perfil.CLIENTE);
+		user3.addPerfil(Perfil.SALAO);
+		user4.addPerfil(Perfil.SALAO);		
+		
+		
+		Salao salao1 = new Salao(null, "Barbearia Pereira", true, "Thiago Silva Pereira", "99999999",user4);
+		Salao salao2 = new Salao(null, "Barbearia Orion Six", true, "Orion Six", "11111111111", user3);
+		
+		user3.getSalao().addAll(Arrays.asList(salao2));
+		user4.getSalao().addAll(Arrays.asList(salao1));
 		
 		Servicos serv1 = new Servicos(null, "Cabelo e Barba", (float) 12.5, 45, salao1);
 		Servicos serv2 = new Servicos(null, "Corte", 15, 30, salao1);
@@ -93,7 +106,7 @@ public class DBService {
 		serv1.getAvaliacao().addAll(Arrays.asList(aval1));
 		serv3.getAvaliacao().addAll(Arrays.asList(aval2));	
 		
-		usuarioRepository.saveAll(Arrays.asList(user1,user2));
+		usuarioRepository.saveAll(Arrays.asList(user1,user2,user3, user4));
 		salaoRepository.saveAll(Arrays.asList(salao1,salao2));
 		enderecoRepository.saveAll(Arrays.asList(end1,end2));
 		servicosRepository.saveAll(Arrays.asList(serv1,serv2,serv3,serv4));

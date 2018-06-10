@@ -68,11 +68,11 @@ public class SalaoService {
 	}
 	
 	public Salao fromDTO(SalaoDTO objDto) {
-		return new Salao(null, objDto.getNome(), objDto.isAtivo(), objDto.getNomeProprietario(), objDto.getTelefone());
+		return new Salao(null, objDto.getNome(), objDto.isAtivo(), objDto.getNomeProprietario(), objDto.getTelefone(), null);
 	}
 	
 	public Salao fromDTO(SalaoNewDTO objDto) {
-		Salao sal = new Salao(null, objDto.getNome(), objDto.isAtivo(), objDto.getNomeProprietario(), objDto.getTelefone());
+		Salao sal = new Salao(null, objDto.getNome(), objDto.isAtivo(), objDto.getNomeProprietario(), objDto.getTelefone(), objDto.getUsuario());
 		Endereco end = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), sal);
 		Servicos serv = new Servicos(null, objDto.getDescricao(), objDto.getValor(), objDto.getTempoGasto(), sal);
 		sal.getEnderecos().add(end);

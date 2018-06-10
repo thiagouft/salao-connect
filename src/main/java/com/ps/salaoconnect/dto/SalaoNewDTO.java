@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.ps.salaoconnect.domain.Usuario;
+
 public class SalaoNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -32,9 +34,19 @@ public class SalaoNewDTO implements Serializable{
 	@NotNull(message="Preenchimento Obrigatório")
 	private float valor;
 	@NotNull(message="Preenchimento Obrigatório")
-	private int tempoGasto;
+	private int tempoGasto;	
 	
+	private Usuario usuario;
+
 	public SalaoNewDTO() {
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getLogradouro() {
@@ -72,7 +84,7 @@ public class SalaoNewDTO implements Serializable{
 	public String getCep() {
 		return cep;
 	}
-
+	
 	public void setCep(String cep) {
 		this.cep = cep;
 	}

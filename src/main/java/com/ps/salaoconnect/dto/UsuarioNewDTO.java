@@ -23,6 +23,8 @@ public class UsuarioNewDTO implements Serializable{
 	private String email;
 	@NotEmpty(message="Preenchimento Obrigatório")
 	private String senha;
+	@NotEmpty(message="Campo Obrigatório")
+	private Integer tipo;
 		
 	public UsuarioNewDTO() {
 	}
@@ -51,7 +53,13 @@ public class UsuarioNewDTO implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
 
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
+	}	
+	
 }

@@ -13,8 +13,8 @@ public class UsuarioDTO implements Serializable{
 	private String nome;
 	private String email;
 	private char sexo;
-	
-	
+	private Integer tipo;
+
 	public UsuarioDTO() {
 	}
 	
@@ -52,6 +52,14 @@ public class UsuarioDTO implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
 	}
 
 }

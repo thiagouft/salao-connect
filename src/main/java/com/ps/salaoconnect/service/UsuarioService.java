@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ps.salaoconnect.domain.Usuario;
+import com.ps.salaoconnect.domain.enums.TipoUsuario;
 import com.ps.salaoconnect.dto.UsuarioDTO;
 import com.ps.salaoconnect.dto.UsuarioNewDTO;
 import com.ps.salaoconnect.repositories.UsuarioRepository;
@@ -57,11 +58,11 @@ public class UsuarioService {
 	}
 	
 	public Usuario fromDTO(UsuarioDTO objDto) {
-		return new Usuario(null, objDto.getNome(), objDto.getSexo(), objDto.getEmail(), null);
+		return new Usuario(null, objDto.getNome(), objDto.getSexo(), objDto.getEmail(), null, null);
 	}
 	
 	public Usuario fromDTO(UsuarioNewDTO objDto) {
-			return new Usuario(null, objDto.getNome(), objDto.getSexo(), objDto.getEmail(), pe.encode(objDto.getSenha()));
+			return new Usuario(null, objDto.getNome(), objDto.getSexo(), objDto.getEmail(), pe.encode(objDto.getSenha()), TipoUsuario.toEnum(objDto.getTipo()));
 	}
 
 
